@@ -1,0 +1,51 @@
+
+.imgLogo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    margin-right:20px ;
+}
+
+.liNav1, .liNav2, .liNav3, .liNav4{
+   display: flex;
+   justify-content: right;
+   margin-right: 30%;
+}
+
+.navBar{
+    display: flex;
+
+    background: rgb(248, 247, 247);
+    border-bottom: 3px solid rgb(252, 198, 198);
+    /*margin-left: 20%;*/
+}
+
+.navLogo{
+    display: flex;
+    justify-content: left;
+    
+}
+
+.styleLinks{
+    text-decoration: none;
+    color: black;
+}
+
+.tituloNav{
+   display: inline-flex;
+   justify-content: flex-start;
+   align-items: center;
+   margin-right: 30%;
+ 
+}
+
+.ulNav{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-size: 20px;
+   
+
+}
