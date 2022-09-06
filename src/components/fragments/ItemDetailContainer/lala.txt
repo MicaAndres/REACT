@@ -1,0 +1,9 @@
+
+return ( ítem && <div>{ítem.nombre}</div)
+
+Los nombres de los componentes depende de un patrón de diseño llamado Container Component Pattern.
+io, esta la propiedad isActive para ver que "link" esta activo
+con NavLink e isActive pueden manejar el tema de marcar el link activo. les pase el link mas arriba
+y sin bootstrap osea css vanilla simplemente usar :active
+O sea en el itemCount solo lo que se muestra y las logicas de agregarAlCarrito va en el containerDetail?
+

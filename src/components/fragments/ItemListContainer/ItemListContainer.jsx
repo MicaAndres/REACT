@@ -5,7 +5,6 @@ import '../ItemCount/ItemCount.css'
 import ListContainer from '../ListContainer/ListContainer';
 
 
-
 export default function ItemListContainer() {
     
     
@@ -15,8 +14,12 @@ export default function ItemListContainer() {
     }
     return(
         <div>
-            <ListContainer/>
+            <ListContainer />
             <CounterCustomhook stock={10} onAdd={onAdd}/>
+            
+           
+            
+            
         </div>
         
     );
