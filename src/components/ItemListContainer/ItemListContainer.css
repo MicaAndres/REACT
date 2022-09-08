@@ -1,0 +1,17 @@
+.listaProductos{
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 2em;
+    justify-content: center;
+    
+}
+
+.divTitulo{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.body{
+    margin-left: 20%;
+    margin-right: 20%;
+}

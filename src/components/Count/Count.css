@@ -1,0 +1,36 @@
+.divCunterContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counter {
+    display: flex;
+    border: 1px solid gainsboro;
+    border-radius: 12%;
+    width: 4rem;
+    justify-content: center;
+}
+
+.divButton {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.styleButtonCount {
+    background-color: rgb(177, 212, 209);
+    width: 100%;
+    margin-right:5px  ;
+    height: 3rem;
+    border: none;
+    color: white;
+    margin-top: 1rem; 
+    cursor: pointer; 
+    font-size: 20px;
+    border-radius: 20%;
+}
+
+.styleButtonCount:hover {
+    background-color: #7eb0b9;
+}

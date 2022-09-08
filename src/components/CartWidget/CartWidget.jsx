@@ -1,9 +1,10 @@
+import React from 'react';
 import './CartWidget.css';
 
 function CartWidget() {
     return(
         <>
-            <img className='cartLogo' src='assets/images/carrito.png' alt='carrito de compras'/>
+            <img className='cartLogo' src='/images/carrito.png' alt='carrito de compras'/>
         </>
     );
 }

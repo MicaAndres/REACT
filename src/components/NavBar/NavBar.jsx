@@ -1,21 +1,32 @@
-import './NavBar.css';
-import CartWidget from '../fragments/CartWidget/CartWidget';
-
-function NavBar() {
+import './Navbar.css'
+import { Link } from 'react-router-dom'
+import CartWidget from '../CartWidget/CartWidget'
+export const Navbar = () => {
   return (
-    <div className='navBar'>
-        <>
-          <img className='imgLogo' src="assets/images/logo.png" alt="" />
-          <h1 className='tituloNav'>COCINITAS DE MADERA</h1>
-        </>
-        <ul className='ulNav'>
-          <li className='liNav1'><a className='styleLinks' href='https://www.google.com/'>Nosotros</a></li>
-          <li className='liNav2'><a className='styleLinks' href='https://www.google.com/'>Productos</a></li>
-          <li className='liNav4'><a className='styleLinks' href='https://www.google.com/'>Perfil</a></li>
-        </ul>
-        <CartWidget/>
-    </div>
-  );
-}
+    <header >
+        <nav className='navBar'>
+          <>
+            <img className='imgLogo' src="/images/logo.png" alt="Logo de la marca" />
+            <h1 className='tituloNav'>COCINITAS DE MADERA</h1>
+          </>
+          <ul className='ulNav'>
+              <Link to='/' className='liNav'>
+                <li >Home</li>
+              </Link>
 
-export default NavBar;
+              <Link to='/categoria/cocinita' className='liNav'>
+                <li>Cocinitas</li>
+              </Link>
+
+              <Link to='/categoria/heladera' className='liNav'>
+                <li>Heladeras</li>
+              </Link>
+
+              <li>
+                <CartWidget/>
+              </li>
+          </ul>
+        </nav>
+    </header>
+  )
+}

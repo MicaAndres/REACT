@@ -1,0 +1,31 @@
+.divCardDetail {
+    display: flex;
+    width: 100%;
+}
+
+.cardImages {
+    width: 50%;
+}
+
+.cardInfo {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 30px;
+    font-size: 22px;
+}
+
+.cardDetail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    border: 1px solid rgb(177, 212, 209);
+    border-radius: 2%;
+    padding: 20px;
+    align-items: center;
+    background: rgb(248, 247, 247);
+    margin-left: 23%;
+}
