@@ -10,6 +10,7 @@ function App() {
   
   return (
     <BrowserRouter>
+    <CartProvider/>
       <div className="body">
       <Navbar />
       <Routes>
@@ -18,6 +19,7 @@ function App() {
         <Route path='/detalles/:id' element={<ItemDetailContainer />} />
       </Routes>
       </div>
+      <CartProvider/>
     </BrowserRouter>
   );
 }
