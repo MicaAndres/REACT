@@ -5,21 +5,12 @@ import ButtonCarrito from './ButtonCarrito'
 
 export const Count = ({stock, initial = 1, onAdd}) => {
     
-    
-
-    
 
   return (
     <div className='divCounterContainer'>
-        
-       
-            <ButtonCarrito/>
+        <ButtonCarrito/>
     </div>
   )
 } 
 
 
-/*<div className='divButton'>
-            <button className='styleButtonCount' onClick={subtractCounter}>-</button>
-            <button className='styleButtonCount' onClick={addCounter}>+</button>
-        </div>*/
