@@ -9,25 +9,27 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     const [cart, setCart] = useState(defaultValue);
 
 
-    //creo la fn para vaciar el carrito
-    const clearCart = () => setCart([]);
+    //funcion para limpiar el carrito
+    const clearCart = () => {
+        setCart([]);
+    }
 
-    //creo la fn para agregar al carrito
+    //funcion para agregar al carrito
     const addToCart = (item, quantity) => {
         //chequeo si el item ya esta en el carrito para sumarle la cantidad si esta y si no, agregarlo
         if (isInCart(item.id)) {
             setCart(cart.map(product => {
-                return product.id === item.id ? { ...product, quantity: product.quantity + quantity } : product
+                return product.id === item.id ? { ...product, quantity: product.quantity + quantity, stock : product.stock - quantity} : product
             }));
         } else {
             setCart([...cart, { ...item, quantity }]) //Si no está el item lo agrego y le sumo el campo quantity
         }
     };
-
-    //creo la fn para saber si esta o no en el carrito
+    console.log(cart)
+    //funcion para saber si esta o no en el carrito, modificar la cantidad
     const isInCart = (id) => cart.find(product => product.id === id) ? true : false;
 
-    //creo la fn para elimiar elementos del carrito
+    //funcion para elimiar elementos del carrito
     const removeFromCart = (id) => setCart(cart.filter(product => product.id !== id));
 
     const getQuantity = () => cart.reduce((collector, product) => collector + product.quantity, 0);
@@ -37,19 +39,48 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     }
 
     //exporto al contexto con todas las funciones que voy a utilizar para agregar, eliminar, vaciar y chequear si esta en el carrito
-    const context = {
-        cart,
-        clearCart,
-        addToCart,
-        removeFromCart,
-        getQuantity,
-        getTotal
-    }
+    
 
 
     return (
-        <Provider value={context}>
+        <Provider value={{
+            clearCart,
+            addToCart,
+            removeFromCart,
+            getQuantity,
+            getTotal,
+            cart
+
+        }}>
+
+
+
             {children}
         </Provider>
     )
 }
+
+
+
+/*  //exporto al contexto con todas las funciones que voy a utilizar para agregar, eliminar, vaciar y chequear si esta en el carrito
+    const context = {
+        
+        clearCart,
+        addToCart,
+        removeFromCart,
+        getQuantity,
+        getTotal,
+        cart
+    }
+
+
+    return (
+
+
+
+        
+        <Provider value={context}>
+            {children}
+        </Provider>
+    )
+}*/

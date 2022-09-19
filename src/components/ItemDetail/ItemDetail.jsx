@@ -33,14 +33,21 @@ export const ItemDetail = ({ item }) => {
                 <div className="cardInfo">
                     <p>{item.description}</p>
                     <p className='fontStyle'>${item.price}</p>
-                    {goToCart ? (<Link to="/Cart" type="button">Ir al carrito</Link>
-                        ) : (<Count stock={item.stock} initial={0} onAdd={onAdd} />
-                        )} 
-                        <Link to="/">Seguir comprando</Link>
-
-                    
                     <p>Stock: {item.stock}</p>
 
+                    {goToCart ? (
+                        <Link to="/Cart" type="button">
+                            Finalizar compra
+                        </Link>
+                        ) : (
+                        <Count stock={item.stock} initial={0} onAdd={onAdd} />
+                        )} 
+
+                        <Link to="/" type="button">
+                            <button className='styleButtonCount' onClick={onclick}>
+                                Seguir comprando
+                            </button> 
+                        </Link>
                 </div>
             </div>
         </article>
