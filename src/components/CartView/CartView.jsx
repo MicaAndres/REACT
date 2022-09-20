@@ -10,12 +10,12 @@ const CartView = () => {
         <div>
             {cart.map((element) =>  (
                     <div>
-                        <span> {element.item.name}</span>
-                        <span> {element.item.price}</span>
-                        <img src={element.item.img} />
+                        <span> {element.name}</span>
+                        <span> {element.price}</span>
+                        <img src={element.img} />
 
                         <span>Cantidad: {element.quantity}</span>
-                        <button onClick={() => removeFromCart(element.item.id)}>
+                        <button onClick={() => removeFromCart(element.id)}>
                             Eliminar
                         </button>
                     </div>

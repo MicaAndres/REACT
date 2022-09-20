@@ -17,8 +17,8 @@ export const Cart = () => {
                 <div class="container text-center">
                     <div class="row">
                         <div class="col p-5 m-5">
-                            <h2>Todavía no agregaste Legos a tu carrito</h2>
-                            <Link to="/"><h3>Ir al catalogo de LEGO</h3></Link>
+                            <h2>Todavía no agregaste cocinitas o heladeras</h2>
+                            <Link to="/"><h3>Ir al catalogo de cocinitas y heladeras</h3></Link>
                         </div>
                     </div>
                 </div>

@@ -7,23 +7,35 @@ import ItemCart from '../Cart/ItemCart';
 const CartWidget = () => {
    const {cart, getQuantity} = useContext(CartContext);
    
-   return  (
-    <>
-    
-    <li className={`nav-item ${cart.length === 0 ?  : }`}>
-        <Link className="" to="../cart">
-          <img src="/images/carrito.png" alt="carrito" width="40px" />
+   return {
+    cart.length === 0 ? (
+    <div>
+        <Link to="/">
+            <div>
+                <div>
+                   <Link>{<ItemCart/>}<img className='cartLogo' src='/images/carrito.png' alt='carrito de compras'/></Link> 
+                </div>
+                <span>{getQuantity()}</span>
+            </div>
         </Link>
-        <span>{getQuantity()}</span>
-      </li>
-    
-    </>
+    </div> 
+) : (
+   <></>
+
     )
+   }  
     
 }
 
 export default CartWidget;
 
+ /*   <li className={`nav-item ${cart.length === 0 ? "d-none" : "d-block"}`}>
+        <Link className="" to="../cart">
+          <img src="/images/carrito.png" alt="carrito" width="40px" />
+        </Link>
+        <span>{getQuantity()}</span>
+      </li>
+    */
 
 
 

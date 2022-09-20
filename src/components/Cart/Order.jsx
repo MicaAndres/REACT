@@ -16,7 +16,7 @@ export const Order = ({ getTotal , getQuantity}) => {
                     <div >
                         {" "}
                         <img
-                            src="/assets/LogoLego.png"
+                            src=""
                             className="img-fluid rounded-start"
                             alt={"logo"}
                             width="100px"
@@ -41,8 +41,8 @@ export const Order = ({ getTotal , getQuantity}) => {
                     <div >
                         <div >
                             <p className="fs-4">Total:</p>
-                            <p className="fs-4">{getQuantity()} LEGOS</p>
-                            <p className="fs-3">u$s{getTotal()}</p>
+                            <p className="fs-4">{getQuantity()} Cocinitas</p>
+                            <p className="fs-3">${getTotal()}</p>
                             <button onClick={confirm} >
                                 Comprar
                             </button>
