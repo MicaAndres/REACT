@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import CartWidget from '../CartWidget/CartWidget'
@@ -22,11 +22,8 @@ export const Navbar = () => {
               <Link to='/categoria/heladera' className='liNav'>
                 <li>Heladeras</li>
               </Link>
-
-              <li>
-                <CartWidget/>
-              </li>
           </ul>
+              <CartWidget/>         
         </nav>
     </header>
   )

@@ -5,35 +5,44 @@ import { Order } from './Order'
 import  ItemCart  from './ItemCart.jsx'
 
 
-export const Cart = () => {
+export const Cart = (item) => {
 
-    const { cart, getTotal, getQuantity } = useContext(CartContext);
+    const { clear, cart, getTotal, getQuantity } = useContext(CartContext);
     /* const [empty, setEmpty] = useState(true);
     const [showOrder, setShowOrder] = useState(true);
  */
-    if (cart.length === 0) {
-        return (
-            <>
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col p-5 m-5">
-                            <h2>Todavía no agregaste cocinitas o heladeras</h2>
-                            <Link to="/"><h3>Ir al catalogo de cocinitas y heladeras</h3></Link>
-                        </div>
-                    </div>
-                </div>
-            </>
-        );
-
-    }
+    
 
     return (
         <>
-            {cart.map((item) => (
-                <ItemCart key={item.id} item={item} />
-            ))}
-            
-            <Order getTotal={getTotal} getQuantity={getQuantity}/>
-        </>
+      <h1>Bienvenidos al carrito</h1>
+      <hr />
+      {cart.length !== 0 ?
+        (
+          <div className=''>
+            <div className=''>
+              {cart.map((e) => <ItemCart key={e.id} item={e} />)}
+              <br />
+              {`Total:  $ ${getTotal()}`}
+              <br />
+              <button className="btn btn-danger" onClick={clear}>Vaciar Carrito</button>
+              <br />
+              <br />
+              <Link to='/checkout'>
+                <button className="btn btn-info">
+                  Finalizar Compra
+                </button>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <h3>El carrito esta vacio</h3>
+            <Link to='/'>Ir a la tienda</Link>
+          </div>
+        )
+      }
+
+    </>
     );
 };

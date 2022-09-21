@@ -6,21 +6,15 @@ import {Link} from 'react-router-dom'
 
 export const ItemDetail = ({ item }) => {
 
+    const [cantidad, setCantidad] = useState(0);
 
-    const { addToCart } = useContext(CartContext);
+    const addItem = useContext(CartContext)    
 
-   
-    const [goToCart, setGoToCart] = useState(false);
-
-    
-    const onAdd = (count) => {
-      
-        setGoToCart(true);
-        addToCart(item, count);
-        let stock = item.stock - count
-        item.stock = stock
-
-    };
+    const handleOnAdd = (count) =>{ 
+        setCantidad(count) 
+        console.log(`Se agregaron ${count} de items del producto ${item.name}`)
+        addItem(item, count)
+        };
 
 
     return (
@@ -35,13 +29,12 @@ export const ItemDetail = ({ item }) => {
                     <p className='fontStyle'>${item.price}</p>
                     <p>Stock: {item.stock}</p>
 
-                    {goToCart ? (
+                    <Count stock={item.stock} initial={0} onAdd={handleOnAdd} />
+
+                    {cantidad>0&&
                         <Link to="/Cart" type="button">
                             Finalizar compra
-                        </Link>
-                        ) : (
-                        <Count stock={item.stock} initial={0} onAdd={onAdd} />
-                        )} 
+                        </Link>} 
 
                         <Link to="/" type="button">
                             <button className='styleButtonCount' onClick={onclick}>

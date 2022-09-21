@@ -1,15 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { products } from '../../mock/products'
-import { ItemList } from '../ItemList/ItemList'
+import React, { useEffect, useState, useContext } from 'react';
+import { products } from '../../mock/products';
+import { ItemList } from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
-import Loader from '../Loader/Loader'
-
+import Loader from '../Loader/Loader';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import db from '../../services/firebase';
 export const ItemListContainer = () => {
   const [productList, setProductList] = useState([])
-
+  const [load, setLoad] = useState(true) 
   const {categoria} = useParams()
-
-
 
   const getProducts = () => new Promise((resolve, reject) => {
     if(categoria) {
@@ -19,24 +18,41 @@ export const ItemListContainer = () => {
     }
   })
 
-  useEffect(() => {
-    getProducts()
-    .then(products => setProductList(products))
+  /*useEffect(() => {
+    getProducts(categoria)
+    .then(products => {setProductList(products)})
     .catch(error => console.error(error))
 
     return () => {
       setProductList([])
     }
 
-  }, [categoria])
+  }, [categoria])*/
 
-  
+  const getData = async (categoria) =>{
+    try{
+      setLoad(true)
+      const document = categoria ? query(collection(db, "Items"), where("category", "==", categoria))
+                                 : collection(db, "Items")
+    const col = await getDocs(document)
+    console.log("col.docs", col.docs)
+    const result = col.docs.map((doc) => doc = {id: doc.id, ...doc.data()})
+      setProductList(result)
+      setLoad(false)
+  } catch (error){
+      console.log(error)
+  }
+
+  }
+  useEffect(() =>{
+    getData(categoria)
+    }, [categoria])
 
   return (
     <div className=' body'>
       <div className='divTitulo body'>
             <div className='listaProductos'>
-              {productList.length ? <ItemList productList={productList} /> : <Loader/>}
+              {getProducts ? <ItemList productList={productList} /> : <Loader/>}
             </div>
         </div>
       

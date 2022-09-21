@@ -1,59 +1,33 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../../hooks/CartContext'
+import React from 'react';
 
-export default function ItemCart({item}) {
-    const {title, img, price, id, cantidad } = item
-    const { removeFromCart} = useContext(CartContext)
+import { useCartContext } from '../Cart/CartContext';
+
+const CartItem = ({ item }) => {
+
+
+    const { removeItem } = useCartContext();
+
     return (
         <>
-        <div >
-            <div >
-                <div >
-                    <div >
-                        <img src={item.img} alt={item.title} />
+            <div className='card mb-3' style={{maxWidth: '540px'}}>
+                <div className='row g-0'>
+                    <div className='col-md-4'>
+                        <img src={item.img} className='img-fluid rounded-start' alt={item.name}/>
                     </div>
-                    <div >
-                        <div >
-                            <h5>{item.title}</h5>
+                    <div className='col-md-8'>
+                        <div className='card-body'>
+                            <h5 className='card-title'>{item.name}</h5>
+                            <p className='card-text'>Cantidad: {item.amount}</p>
+                            <p className='card-text'>Precio unitario: {item.price}</p>
+                            <p className='card-text'>Precio: {item.price * item.amount}</p>
+                            <button className='btn btn-warning' onClick={()=>removeItem(item.id)}>Eliminar Producto</button>
                         </div>
-                    </div>
-                    <div >
-                        <div>
-                            <p>Cantidad:{cantidad}</p>
-                            <p>Precio: ${item.price}</p>
-                        </div>
-                    </div>
-                    <div >
-                        <div >
-                            <p>Subtotal:${cantidad * price}</p>
-                        </div>
-                    </div>
-                    <div >
-                        <div >
-                            <i onClick={() => removeFromCart(id)}  />
-                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
         </>
-        
-    )
+    );
 }
-/*<div>
-            <button  type="button" >
-                Toggle right offcanvas
-            </button>
 
-            <div >
-                <div >
-                    <h5 >Offcanvas right</h5>
-                    <button type="button"  aria-label="Close">
-
-                    </button>
-                </div>
-                <div >
-                    ...
-                </div>
-            </div>
-        </div>*/
+export default CartItem;
