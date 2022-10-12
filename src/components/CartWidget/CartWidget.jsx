@@ -1,29 +1,27 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
+import { Context } from '../../hooks/Context';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../../hooks/CartContext';
+import './CartWidget.css';
 
-const CartWidget = () => {
-    const getQuantity = useContext(CartContext);    
-
-    return (
-        <>
-            {
-                <Link to={"/cart"} style={{ backgroundColor: '#e4c360', border: 'none', marginLeft: 16, marginRight: 24 }}>
-                    <img src="https://cdn-icons-gif.flaticon.com/6416/6416376.gif" alt="cart" width={32} height={32} />
-                    {
-                        getQuantity > 0 
-                            &&
-                            <button style={{ backgroundColor: '#e4c360', border: 'none'}}>
-                                {getQuantity()}
-                            </button>
-                    }
-                </Link>
-            }
-        </>
-    );
+export const CartWidget = () => {
+    const {unidades} = useContext(Context);
+    return(<>{
+        <Link to='/cart'>
+                   <img className='cartLogo' src='/images/carrito.png' alt='carrito de compras'/>
+        
+    {
+      unidades() > 0 && <p>{unidades()}</p>
+     
+    }
+     </Link>
+      
+     }  </> 
+    ); 
 };
 
-export default CartWidget;
+
+
+
 
 
 

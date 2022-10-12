@@ -1,48 +1,49 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { CartContext } from '../../hooks/CartContext'
-import { Order } from './Order'
-import  ItemCart  from './ItemCart.jsx'
+import React, { useContext } from 'react';
+import { Context } from '../../hooks/Context';
+import { Link } from 'react-router-dom';
 
+export const Cart = () => {
+  // traemos los datos del context
+  const { cart, unidades, total, onRemove } = useContext(Context);
 
-export const Cart = (item) => {
+  // uso de rendering condicional para mostrar los items del carrito en la vista o el mensaje de que no hay items agregados con el link a la home
+  return unidades > 0 ? (
+    <>
+      <h1>ITEMS</h1>
+      {cart.map((item) => {
+        return (
+          <article key={item.id}>
+            <h2>{item.name}</h2>
+            <img src={item.image} alt={item.name} height="50px" />
+            <p>Precio individual: ${item.price}</p>
+            <p>Cantidad: {item.cantidad} items</p>
+            <p>Subtotal: ${item.subtotal}</p>
 
-    const { clear, cart, getTotal, getQuantity } = useContext(CartContext);
-    /* const [empty, setEmpty] = useState(true);
-    const [showOrder, setShowOrder] = useState(true);
- */
+            {/* le pasamos la funcion onRemove con el id a eliminar */}
+            <button onClick={() => onRemove(item.id)}>ELIMINAR ITEM</button>
+          </article>
+        );
+      })}
+      <h1>TOTAL: ${total}</h1>
+    </>
+  ) : (
+    <>
+      <h1>NO HAY ITEMS EN TU CARRITO</h1>
+      <Link to="/">IR A COMPRAR</Link>
+    </>
+  );
+};
+    /*<>
+    <h1>Carrito</h1>
     
 
-    return (
-        <>
-      <h1>Bienvenidos al carrito</h1>
-      <hr />
-      {cart.length !== 0 ?
-        (
-          <div className=''>
-            <div className=''>
-              {cart.map((e) => <ItemCart key={e.id} item={e} />)}
-              <br />
-              {`Total:  $ ${getTotal()}`}
-              <br />
-              <button className="btn btn-danger" onClick={clear}>Vaciar Carrito</button>
-              <br />
-              <br />
-              <Link to='/checkout'>
-                <button className="btn btn-info">
-                  Finalizar Compra
-                </button>
-              </Link>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <h3>El carrito esta vacio</h3>
-            <Link to='/'>Ir a la tienda</Link>
-          </div>
-        )
-      }
+    <button onClick={() => addProd(cart.id)}>+</button>
+    <button onClick={() => quitarProductoCarrito(cart.id)}>elimina item</button>
 
-    </>
-    );
-};
+    {/*ACA VA la logica del cart context
+    
+    SI TENGO PRODUCTOS EN EL CARRITO PONERLOS ACA
+    SINO DECIR QUE EL CARRITO ESTA VACIO.*/
+
+
+  

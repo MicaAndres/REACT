@@ -1,13 +1,13 @@
 import { useContext, useState } from "react"
 
-import { CartContext } from "../../hooks/CartContext"
+import {Context } from "../../hooks/Context"
 
 import db from "../../services/firebase"
 import { addDoc, collection } from "firebase/firestore"
 import { useNavigate } from "react-router-dom"
 
 const Checkout = () => {
-    const { cart, getTotal, clear } = useContext(CartContext)
+    const { cart, getTotal, clear } = useContext(Context)
     const [orderId, setOrderId] = useState()
     const [buyer, setBuyer] = useState({
         Nombre: '',

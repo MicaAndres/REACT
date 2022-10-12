@@ -2,8 +2,8 @@ import React from 'react'
 import './Card.css'
 import { Link } from 'react-router-dom';
 
-
-export const Card = ({item}) => {
+//card es las card que estan en home, cocinita y heladera
+export const Card = ({item}) => { //es el encargado de recibir la informacion del mapeo realizado en itemlist y renderizarlo informacion por informacion  titulo, img, etc
   const {title, img, price, id} = item
   return (
     
